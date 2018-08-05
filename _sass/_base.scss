@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 html, body {
+  background-color: $background-color;
   height: auto;
   min-height: 100%;
   -webkit-text-size-adjust: 100%;
