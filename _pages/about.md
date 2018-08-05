@@ -5,7 +5,7 @@ title: Luke Wilimitis
 description: Engineer. Artist. Creator.
 
 news: true
-#social: true
+social: true
 ---
 
 Passionate polyglot blurring the lines between technology and art.
