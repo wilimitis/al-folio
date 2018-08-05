@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2016-05-01 00:00:00-0000
+date: 2015-05-01
 inline: true
 ---
 
-Machine learning @ SWC Technology Partners.
+DevOps research @ Motorola Solutions.

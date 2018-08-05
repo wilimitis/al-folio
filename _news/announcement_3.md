@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2017-07-05 00:00:00-0000
+date: 2016-05-01
 inline: true
 ---
 
-Mobile engineer @ Una.
+Machine learning @ SWC Technology Partners.

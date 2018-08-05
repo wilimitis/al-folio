@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2017-02-01 00:00:00-0400
+date: 2015-08-01
 inline: true
 ---
 
-Software engineer @ Apartments.com.
+Transpilation research @ Northern Trust.
