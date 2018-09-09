@@ -8,8 +8,6 @@ news: true
 social: true
 ---
 
-Passionate polyglot blurring the lines between technology and art.
-
 ☀️ Creating an inclusive community to discuss sensitive issues at Una.
 
-🌘 Exploring the connection between procedural generation and micro/macro-animations.
+🌘 Exploring the intersection of technology, mathematics, and visual aesthetics.
