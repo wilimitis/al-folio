@@ -2,7 +2,6 @@
 layout: about
 permalink: /
 title: Luke Wilimitis
-description: Engineer. Artist. Creator.
 
 news: true
 social: true
