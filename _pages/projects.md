@@ -5,7 +5,7 @@ permalink: /projects/
 description: technology x art
 ---
 
-{% for project in site.projects %}
+{% for project in site.projects reversed %}
 
 {% if project.redirect %}
 <div class="project">
