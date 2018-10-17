@@ -9,7 +9,7 @@ img: /assets/img/2017-09-01-project.gif
   <img class="col three" src="{{ site.baseurl }}/assets/img/2017-09-01-project.gif">
 </div>
 
-[source code](https://editor.p5js.org/SpookyFox/sketches/SkHeMUJxf)
+[source code](https://editor.p5js.org/spookyfox/sketches/SkHeMUJxf)
 
 A foray into the realm of procedurally generated art.
 

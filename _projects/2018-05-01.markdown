@@ -9,7 +9,7 @@ img: /assets/img/2018-05-01-project.gif
   <img class="col three" src="{{ site.baseurl }}/assets/img/2018-05-01-project.gif">
 </div>
 
-[source code](https://editor.p5js.org/SpookyFox/sketches/S1iWwASfX)
+[source code](https://editor.p5js.org/spookyfox/sketches/S1iWwASfX)
 
 This piece was inspired primarily by the myriad of interesting tunnel effects made prevalent by stellar demoscene clips.
 
