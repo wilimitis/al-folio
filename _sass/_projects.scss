@@ -6,6 +6,10 @@
     vertical-align: middle;
     width: 33.33%;
 
+    @media screen and (max-width: $viewport-small) {
+        width: 100%;
+    }
+
     .thumbnail {
         overflow: hidden;
         height: 200px;
