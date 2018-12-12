@@ -5,7 +5,7 @@ description:
 img: /assets/img/2018-09-30-project.gif
 ---
 
-<img class="col three" src="{{ site.baseurl }}/assets/img/2018-09-30-project.gif">
+<img class="col" src="{{ site.baseurl }}/assets/img/2018-09-30-project.gif">
 
 [source code](https://www.shadertoy.com/view/4t3Bzr)
 

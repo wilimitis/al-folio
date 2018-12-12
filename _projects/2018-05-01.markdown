@@ -6,7 +6,7 @@ img: /assets/img/2018-05-01-project.gif
 ---
 
 <div class="img_row">
-  <img class="col three" src="{{ site.baseurl }}/assets/img/2018-05-01-project.gif">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2018-05-01-project.gif">
 </div>
 
 [source code](https://editor.p5js.org/spookyfox/sketches/S1iWwASfX)

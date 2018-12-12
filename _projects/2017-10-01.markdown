@@ -5,7 +5,7 @@ description: renderings and animations
 img: /assets/img/2017-10-01-project.gif
 ---
 
-<img class="col three" src="{{ site.baseurl }}/assets/img/2017-10-01-project.gif">
+<img class="col" src="{{ site.baseurl }}/assets/img/2017-10-01-project.gif">
 
 [source code](https://editor.p5js.org/spookyfox/sketches/SkoykRRCW)
 

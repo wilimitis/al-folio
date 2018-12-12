@@ -5,7 +5,7 @@ description: crime visualization and avoidance utility
 img: /assets/img/2015-07-01-project.png
 ---
 
-<img class="col three" src="{{ site.baseurl }}/assets/img/2015-07-01-project.png">
+<img class="col" src="{{ site.baseurl }}/assets/img/2015-07-01-project.png">
 
 [source code](https://github.com/wilimitis/Chi-Crime)
 

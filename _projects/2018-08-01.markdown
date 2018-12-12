@@ -5,7 +5,7 @@ description: foray into generative 3D
 img: /assets/img/2018-08-01-project.gif
 ---
 
-<img class="col three" src="{{ site.baseurl }}/assets/img/2018-08-01-project.gif">
+<img class="col" src="{{ site.baseurl }}/assets/img/2018-08-01-project.gif">
 
 After rewatching the original [Ghost in the Shell](https://en.wikipedia.org/wiki/Ghost_in_the_Shell) anime I was particularly inspired by the cyberpunk aesthetic and was determined to introduce the third axis into a generative art piece.
 
