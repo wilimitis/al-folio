@@ -60,7 +60,7 @@ collections:
     permalink: /news/:path/
   projects:
     output: true
-    permalink: /projects/:path/
+    permalink: /portfolio/:path/
 
 news_limit: 6
 

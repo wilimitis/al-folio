@@ -1,8 +1,8 @@
 ---
 layout: page
-title: projects
-permalink: /projects/
-description: technology x art
+title: portfolio
+permalink: /portfolio/
+description: extra-professional explorations in technology x art
 ---
 
 {% for project in site.projects reversed %}
