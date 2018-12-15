@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ray marching
+title: ray marching i
 description:
 img: /assets/img/2018-09-30-project.gif
 ---

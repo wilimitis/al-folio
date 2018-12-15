@@ -1,31 +1,73 @@
 ---
 layout: page
-title: model renderer
+title: indirect illumination i
 description:
-img: /assets/img/2018-12-10-project-1.png
+img: /assets/img/2018-12-14-project-1.png
 ---
 
-<img class="col" src="{{ site.baseurl }}/assets/img/2018-12-10-project-1.png">
+<div class="img_row">
+  <img class="col one" src="{{ site.baseurl }}/assets/img/2018-12-14-project-3.png">
+  <img class="col one" src="{{ site.baseurl }}/assets/img/2018-12-14-project-2.png">
+  <img class="col one" src="{{ site.baseurl }}/assets/img/2018-12-14-project-1.png">
+</div>
+_left to right: OpenGL reference, ray traced Blinn-Phong, weighted Monte Carlo indirect illumination_
 
 [source code](https://github.com/wilimitis/tracer)
 
-There are tradeoffs to branching outside of Shadertoy and creating a custom c++ tracer. The high-level, primary benefit which compelled me to pursue this task is that I can create more complex lighting paths in a more organized manner. That's not to say folks aren't creating brilliant lighting systems on Shadertoy - as I've mentioned before, they are.
-
-For instance, I kept encountering a situation in Shadertoy when attempting to calculate recursive reflection and refraction rays where I'm not compelled to introduce my own stack design and also don't want to take a partial approach to gathering light from some, but not all, branches.
-
-<img class="col" src="{{ site.baseurl }}/assets/img/2018-12-10-project-2.png">
-
-_opting out of the high-poly render due to time and GPU constraints_
-
-Thus, I began following along with the University of Utah Ray Tracing course in which, over the semester, the students implement various direct illumination features and, ultimately, implement indirect illumination features. The bootstrapped OpenGL reference code is available online and seemed suitable for beginning this journey. Of course, one of my near-term projects will be minimizing and reconstructing the sample code.
+A first pass at implementing indirect illumination by toying with some of the mathematical machinery introduced in _FoCG_.
 
 The above image is a culmination of implementing algorithms to support
-- coordinate space transformations: screen, camera, world, object
-- recursive scene graph scaling
-- naïve lighting: ambient, diffuse, specular
-- naïve shadow rays
-- recursive reflective lighting
-- recursive refractive lighting
-- polygonal meshes via Möller-Trumbore
+- uniformly sampling the unit hemisphere
+- naïve Monte Carlo indirect illumination
 
-I immediately realized the difficulties that would result from attempting to follow along _outside_ the class, however didn't give up and worked my way through the first 5 projects before branching off and approaching global illumination. Perhaps the most useful resource I found, and I can't actually reiterate this enough, was Dr. Shirley's [Fundamentals of Computer Graphics](https://www.cs.cornell.edu/~srm/fcg4/).
+There are a number of techniques which could the overall smoothness of the produced image
+- taking more indirect illumination samples per hit
+- taking more than 1 sample per pixel
+- enlarging the screen size
+- gamma correction
+
+The code approximates a solution to the rendering equation
+```
+Ls(x, ko) ≈ Le(ko) + 𝜌(ki, ko) * Lf(ki) * cos𝜃i * d𝜎i / p(ki)
+```
+
+or, less formally,
+```
+radiance at point x in direction ko =
+  emittance at x in direction ko +
+  BRDF of directions ki and ko *
+    field radiance in direction ki *
+    cosine of ki and the hit normal *
+    change in solid angle at x /
+    distribution evaluated at ki
+```
+
+where based on the assumptions that
+- our BRDF is Lambertian
+- a material is hit at point `x'` hit by a ray in direction `ki`
+
+```
+𝜌(ki, ko) = (1 / 𝜋)
+Lf(ki) = Ls(-ki)
+d𝜎i = cos𝜃' / |x - x'|²
+p(ki) = cos𝜃i / 𝜋
+```
+
+hence
+```
+Ls(x, ko) ≈ Le(ko) + Ls(-ki) * cos𝜃' / |x - x'|²
+```
+
+Essentially, these images are the result of the following diffuse-only computation inside a color gathering block where `g = d𝜎i`.
+```
+Color direct = ...;
+Color indirect;
+for (int i = 0; i < SAMPLE_SIZE; i++) {
+  Ray ray = sample(intersection.normal, random(), random());
+  Hit hit = cast(ray);
+  indirect += color(hit) * g(hit);
+}
+return direct + indirect;
+```
+
+There's certainly still more to unpack here, and I can't wait to dive in this weekend!
