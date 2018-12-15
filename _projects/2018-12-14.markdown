@@ -28,46 +28,15 @@ There are a number of techniques which could the overall smoothness of the produ
 
 The code approximates a solution to the rendering equation
 ```
-Ls(x, ko) ≈ Le(ko) + 𝜌(ki, ko) * Lf(ki) * cos𝜃i * d𝜎i / p(ki)
+Ls(ko) = ∫ 𝜌(ki, ko) Lf(ki) cos𝜃i d𝜎i
 ```
 
 or, less formally,
 ```
-radiance at point x in direction ko =
-  emittance at x in direction ko +
+reflected radiance at a point on a surface in direction ko =
   BRDF of directions ki and ko *
-    field radiance in direction ki *
-    cosine of ki and the hit normal *
-    change in solid angle at x /
-    distribution evaluated at ki
+    field radiance coming from direction ki *
+    cosine of ki and the surface normal *
+    change in solid angle at x
+for all directions ki
 ```
-
-where based on the assumptions that
-- our BRDF is Lambertian
-- a material is hit at point `x'` hit by a ray in direction `ki`
-
-```
-𝜌(ki, ko) = (1 / 𝜋)
-Lf(ki) = Ls(-ki)
-d𝜎i = cos𝜃' / |x - x'|²
-p(ki) = cos𝜃i / 𝜋
-```
-
-hence
-```
-Ls(x, ko) ≈ Le(ko) + Ls(-ki) * cos𝜃' / |x - x'|²
-```
-
-Essentially, these images are the result of the following diffuse-only computation inside a color gathering block where `g = d𝜎i`.
-```
-Color direct = ...;
-Color indirect;
-for (int i = 0; i < SAMPLE_SIZE; i++) {
-  Ray ray = sample(intersection.normal, random(), random());
-  Hit hit = cast(ray);
-  indirect += color(hit) * g(hit);
-}
-return direct + indirect;
-```
-
-There's certainly still more to unpack here, and I can't wait to dive in this weekend!
