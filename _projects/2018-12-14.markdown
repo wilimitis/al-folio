@@ -64,25 +64,23 @@ Ls(ko) ≈ Le(ko) + Ls(-ki)
 
 We can construct an efficient diffuse-only approach which samples direct lighting and indirect lighting. In the following code the contribution from a single point light is considered.
 ```
-Color direct = pointLight.intensity *
-  hit.diffuse *
-  hit.normal.dot(-pointLight.direction(hit.point));
+Color direct = pointLight.intensity * hit.normal.dot(-pointLight.direction(hit.point));
 Color indirect;
 for (int i = 0; i < INDIRECT_SAMPLES; i++) {
   Ray ray = sample(hit.normal, random(), random());
   indirect += color(ray);
 }
-return direct + indirect;
+return (direct + indirect) * diffuse;
 ```
 
-In working out the math behind how a direct light sample is calculated, I realized an interesting relationship exists evaluating the direct light sample according to the rendering equation when it is integrated over surface area.
+In working out the math behind how a direct light sample is calculated, I realized an interesting relationship exists when evaluating the direct light sample according to the rendering equation integrated over surface area.
 ```
 Ls(x, ko) = ∫ 𝜌(x, ki, ko) Ls(x', x - x') cos𝜃i cos𝜃' dA / ‖x - x'‖²
 ```
 
 Taking a single sample
 ```
-Ls(x, ko) = 𝜌(x, ki, ko) Ls(x', x - x') cos𝜃i cos𝜃' dA / (p(x') ‖x - x'‖²)
+Ls(x, ko) ≈ 𝜌(x, ki, ko) Ls(x', x - x') cos𝜃i cos𝜃' dA / (p(x') ‖x - x'‖²)
 ```
 
 Since _cos𝜃i_ is, in this case, the cosine of the angle between the surface normal and the direction from _x_ to the light, it is equivalent to the Lambertian term.
