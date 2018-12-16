@@ -71,7 +71,7 @@ $darken-3:          rgba(#000,.25) !default;
 $darken-4:          rgba(#000,.5) !default;
 
 $theme-color:       $pink;
-$code-color:        black;
+$code-color:        $white;
 $text-color:        $white;
 $background-color:  black;
 
@@ -120,7 +120,7 @@ $form-field-padding-x: .5rem;
 
 // Code
 $pre-border-radius: 0;
-$pre-background-color: #fafafa;
+$pre-background-color: 0;
 $hljs-comment: $mid-gray;
 $hljs-keyword: $dark-blue;
 $hljs-name: $dark-gray;
