@@ -39,7 +39,7 @@ where
 ```
 ∫ = integral over all directions ki
 Ls(ko) = reflected radiance at a point on a surface in direction ko
-𝜌(ki, ko) = BRDF of directions ki and ko *
+𝜌(ki, ko) = BRDF of directions ki and ko
 Lf(ki) = field radiance of direction ki
 cos𝜃i = cosine of ki and the surface normal
 d𝜎i = change in solid angle at x
