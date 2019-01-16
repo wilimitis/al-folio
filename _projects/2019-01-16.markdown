@@ -1,0 +1,25 @@
+---
+layout: page
+title: photon mapping i
+description:
+img: /assets/img/2019-01-16-project.png
+---
+
+<div class="img_row">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-16-project.png">
+</div>
+<div class="caption">
+  400 x 400<br/>
+  4 non-adaptive antialias samples<br/>
+  12 direct sphere light samples<br/>
+  12 indirect light samples<br/>
+  4 specular bounces<br/>
+  50 million photons emitted
+</div>
+
+[model](https://sketchfab.com/models/6ca08d38b70c4984a3170a27b79aa8b4)  
+[source code](https://github.com/wilimitis/illumin8r)
+
+I produced this render using the lighting engine I've recently rebuilt from the ground up.
+
+More to come soon!
