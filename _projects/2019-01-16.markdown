@@ -11,7 +11,7 @@ img: /assets/img/2019-01-16-project.png
 <div class="caption">
   400 x 400<br/>
   4 non-adaptive antialias samples<br/>
-  12 direct sphere light samples<br/>
+  16 direct sphere light samples<br/>
   12 indirect light samples<br/>
   4 specular bounces<br/>
   50 million photons emitted
@@ -20,6 +20,6 @@ img: /assets/img/2019-01-16-project.png
 [model](https://sketchfab.com/models/6ca08d38b70c4984a3170a27b79aa8b4)  
 [source code](https://github.com/wilimitis/illumin8r)
 
-I produced this render using the lighting engine I've recently rebuilt from the ground up.
+I produced this render using the lighting engine I've recently rebuilt from the ground up, by dividing decomposing the rendering equation according to [Jensen 96: Global Illumination using Photon Maps](http://graphics.ucsd.edu/~henrik/papers/photon_map/global_illumination_using_photon_maps_egwr96.pdf).
 
-More to come soon!
+More to come on this soon!
