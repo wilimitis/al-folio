@@ -20,6 +20,48 @@ img: /assets/img/2019-01-16-project.png
 [model](http://www.prinmath.com/csci5229/OBJ/index.html)  
 [source code](https://github.com/wilimitis/illumin8r)
 
-I produced this render using the lighting engine I've recently rebuilt from the ground up, by decomposing the rendering equation according to [Jensen 96: Global Illumination using Photon Maps](http://graphics.ucsd.edu/~henrik/papers/photon_map/global_illumination_using_photon_maps_egwr96.pdf).
+I produced this render using the lighting engine I've recently rebuilt from the ground up, by manipulating the rendering equation according to [Jensen 96: Global Illumination using Photon Maps](http://graphics.ucsd.edu/~henrik/papers/photon_map/global_illumination_using_photon_maps_egwr96.pdf). Beginning with the rendering equation, we can decompose `Li` into light, caustic, and diffuse contributions and similarly decompose `fr` into diffuse and specular components.
+```
+Lr = ∫ fr Li cos𝜃i d𝜎i
 
-More to come on this soon!
+Li = Li,l + Li,c + Li,d
+
+fr = fr,d + fr,s
+
+Lr = ∫ fr Li,l cos𝜃i d𝜎i +
+  ∫ fr,s (Li,c + Li,d) cos𝜃i d𝜎i +
+  ∫ fr,d Li,c cos𝜃i d𝜎i +
+  ∫ fr,d Li,d cos𝜃i d𝜎i
+```
+
+The paper then goes on to further decompose radiance calculations into accurate and approximate solutions. For simplicity and to ensure correctness, I've opted out of considering the approximate solutions, at the cost of efficiency (though I do find it interesting to consider assigning visual importance to radiance computations, like using an approximate approach for indirect soft illumination at a surface after _n_ specular bounces).
+
+The `fr,d Li,c cos𝜃i d𝜎i` term is interesting in particular because it is defined as light which has interacted with a diffuse surface before interacting with a specular surface. A path tracing solution would require an exhaustive number of samples (though admittedly I haven't worked entirely through more modern bi-directional approaches yet), yet this is the term which, when computed accurately, produces stunning visual effects e.g. caustics.
+
+<div class="img_row">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-16-project-1.png">
+</div>
+
+The paper elaborates a bit more on how global and caustic photon maps can be devised in such a way as to provide efficient approximate solutions as discussed briefly above, but to calculate the term in question we can render the image in two phases with only the caustic photon map.
+```
+Prerender
+- cast photons from the lights into the scene
+- track hits which interact with a specular surface and then a diffuse surface
+
+Render
+- cast rays from the camera into the scene
+- estimate radiance from nearby photon hits
+- use Monte Carlo methods to compute the other terms
+```
+
+Let's ensure we've done this correctly at least based on a rough empirical estimation.
+
+<div class="img_row">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-16-project-2.png">
+</div>
+<div class="caption">
+  Yay!
+</div>
+<br />
+
+The rendered dielectric material utilizes diracs (e.g. it is "pure" and its bxdf returns a single direction with 100% probability) and is without a diffuse component, and thus behaves slightly different than the plasticy, physical sphere.
