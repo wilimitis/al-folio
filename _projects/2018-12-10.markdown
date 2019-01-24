@@ -15,8 +15,6 @@ For instance, I kept encountering a situation in Shadertoy when attempting to ca
 
 <img class="col" src="{{ site.baseurl }}/assets/img/2018-12-10-project-2.png">
 
-_opting out of the high-poly render due to time and GPU constraints_
-
 Thus, I began following along with the University of Utah Ray Tracing course in which, over the semester, the students implement various direct illumination features and, ultimately, implement indirect illumination features. The bootstrapped OpenGL reference code is available online and seemed suitable for beginning this journey. Of course, one of my near-term projects will be minimizing and reconstructing the sample code.
 
 The above image is a culmination of implementing algorithms to support
