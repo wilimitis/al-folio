@@ -1,0 +1,21 @@
+---
+layout: page
+title: modified Phong brdf
+description:
+img: /assets/img/2019-01-27-project.png
+---
+
+<div class="img_row">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-27-project.png">
+</div>
+<div class="caption">
+  400 x 400<br/>
+  4 non-adaptive antialias samples<br/>
+  6 direct sphere light samples<br/>
+  6 indirect light samples<br/>
+</div>
+
+[model](http://www.prinmath.com/csci5229/OBJ/index.html)  
+[source code](https://github.com/wilimitis/illumin8r)
+
+I produced this render by integrating the modified Phong BRDF into illumin8r. More to come on this soon!
