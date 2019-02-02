@@ -17,7 +17,7 @@ img: /assets/img/2019-01-16-project-0.png
   50 million photons emitted
 </div>
 
-[model](http://www.prinmath.com/csci5229/OBJ/index.html)  
+[model](https://www.turbosquid.com/3d-models/dragon-egg-ma-free/940949)  
 [source code](https://github.com/wilimitis/illumin8r)
 
 I produced this render using the lighting engine I've recently rebuilt from the ground up, by manipulating the rendering equation according to [Jensen 96: Global Illumination using Photon Maps](http://graphics.ucsd.edu/~henrik/papers/photon_map/global_illumination_using_photon_maps_egwr96.pdf). Beginning with the rendering equation, we can decompose `Li` into light, caustic, and diffuse contributions and similarly decompose `fr` into diffuse and specular components.
