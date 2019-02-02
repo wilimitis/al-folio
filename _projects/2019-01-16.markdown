@@ -2,11 +2,11 @@
 layout: page
 title: photon mapping i
 description:
-img: /assets/img/2019-01-16-project.png
+img: /assets/img/2019-01-16-project-3.png
 ---
 
 <div class="img_row">
-  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-16-project.png">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-16-project-3.png">
 </div>
 <div class="caption">
   400 x 400<br/>
