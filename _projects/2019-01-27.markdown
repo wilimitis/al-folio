@@ -2,11 +2,14 @@
 layout: page
 title: modified Phong brdf
 description:
-img: /assets/img/2019-01-27-project.png
+img: /assets/img/2019-01-27-project-1.png
 ---
 
 <div class="img_row">
-  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-27-project.png">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-27-project-1.png">
+</div>
+<div class="img_row">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-27-project-2.png">
 </div>
 <div class="caption">
   400 x 400<br/>
@@ -18,4 +21,4 @@ img: /assets/img/2019-01-27-project.png
 [model](http://www.prinmath.com/csci5229/OBJ/index.html)  
 [source code](https://github.com/wilimitis/illumin8r)
 
-I produced this render by integrating the modified Phong BRDF into illumin8r. More to come on this soon!
+I produced these renders by integrating the modified Phong BRDF into illumin8r. More to come on this soon!
