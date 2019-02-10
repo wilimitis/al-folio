@@ -21,4 +21,54 @@ img: /assets/img/2019-01-27-project-1.png
 [model](http://www.prinmath.com/csci5229/OBJ/index.html)  
 [source code](https://github.com/wilimitis/illumin8r)
 
-I produced these renders by integrating the modified Phong BRDF into illumin8r. More to come on this soon!
+I produced these renders by integrating the modified Phong BRDF into illumin8r according to [Lafortune 94](http://mathinfo.univ-reims.fr/IMG/pdf/Using_the_modified_Phong_reflectance_model_for_Physically_based_rendering_-_Lafortune.pdf).
+
+The _modified Phong brdf_ is a formulation of the _Phong reflection model_ which is (or, well, _can be_ depending on the chosen constants and whether estimations are clamped, as addressed in the paper) physically plausible under
+1. Reciprocity: `f(i, o) = f(o, i)`
+2. Conservation: `L = ∫ fr cos𝜃i d𝜎i ≤ 1`
+
+Given
+```
+𝜃 = angle between the light direction and the surface normal
+𝛼 = angle between the perfectly reflected light direction and the view direction
+n = glossiness parameter
+```
+
+The Phong reflection model can then be defined as follows
+```
+L = kd cos𝜃 + ks cosⁿ𝛼
+```
+
+Let's check if the model is reciprocal as-is. As a counter-example, consider `kd = 1`, `ks = 0`, `𝜃i` and `𝜃o` such that `cos𝜃i ≠ cos𝜃o`. Then `f(i, o) = kd cos𝜃i = cos𝜃i ≠ cos𝜃o = kd cos𝜃o = f(o, i)`. Therefore the model is not reciprocal.
+
+Let's check if the model conserves energy as-is. As a counter-example, consider `kd = 1` and `ks = 0`. Then
+```
+∫ fr cos𝜃 d𝜎 =
+∫ kd cos𝜃 cos𝜃 d𝜎 =
+∫ cos𝜃 cos𝜃 d𝜎 =
+∫ cos𝜃 cos𝜃 d𝜎 =
+∫ cos²𝜃 d𝜎 =
+∫∫ cos²𝜃 sin𝜃 d𝜃 d𝜑 =
+2𝜋 ∫ cos²𝜃 sin𝜃 d𝜃 =
+2𝜋 / 3 >
+1
+```
+Therefore the model does not conserve energy. Perhaps if we reduce the value of `kd` we can achieve a model for which energy is conserved, however describing a material in a renderer as being fully diffuse does not seem like it should be out of the question.
+
+By [deriving](http://www.farbrausch.de/~fg/stuff/phong.pdf) a normalization factor for the model to ensure that energy is conserved, we can define the modified Phong brdf as follows
+```
+f = kd / 𝜋 + ks (n + 2 / 2 𝜋) cosⁿ𝛼
+```
+Note that the derivation also addresses the concern as to why the modern Phong formulation multiplies the specular component by `cos𝜃`.
+
+The paper follows through with a straightforward proof of energy conservation, however does not directly address reciprocity. Since the counter-example from above depends on the now non-existent `cos𝜃` term, which has since been extracted as it is already computed per the rendering equation, we only need to show that `𝛼` is unaffected by swapping `i` and `o`. Consider `wi` and `wo` such that `wi ∙ N ≠ wo ∙ N`, and `ri` and `ro` which are perfectly specular reflection directions. Then `wi ∙ N = ri ∙ N` and `wo ∙ N = ro ∙ N` henceforth `wi ∙ ro = wi ∙ wo = 𝛼 = wo ∙ wi = wo ∙ ri`.
+
+<div class="img_row">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-27-project-3.jpg">
+</div>
+
+One practical consideration to note here when sampling the specular component is that the sample direction must be oriented around the perfect specular reflection direction. This is the critical step which produces glossy reflections as shown in the first render above.
+
+<div class="img_row">
+  <img class="col" src="{{ site.baseurl }}/assets/img/2019-01-27-project-4.jpg">
+</div>
