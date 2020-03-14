@@ -2,8 +2,8 @@
 # Site settings
 # -----------------------------------------------------------------------------
 name: Luke Wilimitis
-email:
-description: technology x art
+email: wilimitis9@gmail.com
+description: psyreal nature spirits
 footer_text: > # this means to ignore newlines until "url:"
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
@@ -16,8 +16,9 @@ last_updated: # leave blank if you don't want to display last updated
 # -----------------------------------------------------------------------------
 # Social integration
 # -----------------------------------------------------------------------------
-github_username: wilimitis # your GitHub user name
-twitter_username: wilimitis # your Twitter handle
+instagram_username: luke_wilimitis # your Twitter handle
+github_username: # your GitHub user name
+twitter_username: # your Twitter handle
 linkedin_username: # your LinkedIn user name
 scholar_userid: # your Google Scholar ID
 orcid_id: # your ORCID ID

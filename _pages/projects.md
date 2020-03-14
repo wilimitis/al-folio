@@ -2,7 +2,7 @@
 layout: page
 title: portfolio
 permalink: /portfolio/
-description: extra-professional explorations in technology x art
+description: Original Paintings
 ---
 
 {% for project in site.projects reversed %}
@@ -26,21 +26,15 @@ description: extra-professional explorations in technology x art
 </div>
 {% else %}
 
-<div class="project ">
+<div class="project center">
     <div class="thumbnail">
-        <a href="{{ project.url | prepend: site.baseurl | prepend: site.url }}">
         {% if project.img %}
         <img class="thumbnail" src="{{ project.img | prepend: site.baseurl | prepend: site.url }}"/>
         {% else %}
         <div class="thumbnail blankbox"></div>
-        {% endif %}    
-        <span>
-            <h1>{{ project.title }}</h1>
-            <br/>
-            <p>{{ project.description }}</p>
-        </span>
-        </a>
+        {% endif %}
     </div>
+    <span>{{ project.title }}</span>
 </div>
 
 {% endif %}
