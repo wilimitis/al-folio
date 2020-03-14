@@ -10,6 +10,12 @@
         width: 100%;
     }
 
+    .title {
+      overflow: hidden;
+      height: 50px;
+      color: $grey-color-dark;
+    }
+
     .thumbnail {
         overflow: hidden;
         height: 300px;

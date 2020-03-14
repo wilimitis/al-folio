@@ -5,7 +5,7 @@ permalink: /portfolio/
 description: Original Paintings
 ---
 
-{% for project in site.projects reversed %}
+{% for project in site.projects %}
 
 {% if project.redirect %}
 <div class="project">
@@ -34,7 +34,7 @@ description: Original Paintings
         <div class="thumbnail blankbox"></div>
         {% endif %}
     </div>
-    <span>{{ project.title }}</span>
+    <div class="title">{{ project.title }}</div>
 </div>
 
 {% endif %}
